@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeValue AI - Pokemon Card Valuation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-gradient-overlay"></div>
+    <header class="app-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+                <h1>PokéValue <span class="accent-text">AI</span></h1>
+            </div>
+            
+            <div class="header-actions">
+                <div class="status-badge" id="api-status">
+                    <span class="status-indicator yellow"></span>
+                    <span class="status-label">Demo Mode</span>
+                </div>
+                <button class="icon-button" id="settings-toggle" title="API Settings">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Settings Panel (Slide down or overlay) -->
+    <section class="settings-drawer" id="settings-drawer">
+        <div class="drawer-content">
+            <h3><i class="fa-solid fa-gears"></i> API Configuration</h3>
+            <p class="drawer-desc">By default, the app runs in <strong>Demo Mode</strong> returning mock cards. Input your Ximilar token to search real cards.</p>
+            
+            <div class="input-group">
+                <label for="ximilar-token-input">Ximilar API Token</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-key input-icon"></i>
+                    <input type="password" id="ximilar-token-input" placeholder="Token a5b9c8d7...">
+                </div>
+                <small>Get a token at <a href="https://app.ximilar.com/" target="_blank" rel="noopener">app.ximilar.com</a></small>
+            </div>
+            <div class="drawer-actions">
+                <button class="btn btn-secondary" id="settings-clear">Clear Key</button>
+                <button class="btn btn-primary" id="settings-save">Save & Connect</button>
+            </div>
+        </div>
+    </section>
+    <main class="app-main">
+        <div class="grid-container">
+            
+            <!-- Left Column: Camera Scanner & Input -->
+            <section class="card scanner-section">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-camera"></i> Card Scanner</h2>
+                    <div class="camera-selector-wrapper">
+                        <select id="camera-select" class="custom-select">
+                            <option value="">Loading cameras...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="scanner-viewport">
+                    <!-- Live Camera Stream -->
+                    <video id="video-stream" autoplay playsinline class="hidden"></video>
+                    
+                    <!-- Captured / Uploaded Image Preview -->
+                    
